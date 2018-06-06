@@ -52,7 +52,7 @@ KEYMAPS(
 
 static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
 
-void toggleLedsOnSuspendResume(kaleidoscope::HostPowerManagement::Event event) {
+void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event event) {
   switch (event) {
   case kaleidoscope::HostPowerManagement::Suspend:
     LEDControl.paused = true;
@@ -63,11 +63,9 @@ void toggleLedsOnSuspendResume(kaleidoscope::HostPowerManagement::Event event) {
     LEDControl.paused = false;
     LEDControl.refreshAll();
     break;
+  case kaleidoscope::HostPowerManagement::Sleep:
+    break;
   }
-}
-
-void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event event) {
-  toggleLedsOnSuspendResume(event);
 }
 
 KALEIDOSCOPE_INIT_PLUGINS(
@@ -78,6 +76,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
 void setup() {
   Kaleidoscope.setup();
+  LEDControl.set_mode(0);
 }
 
 void loop() {
