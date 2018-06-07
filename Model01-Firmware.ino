@@ -9,7 +9,6 @@
 #include "Kaleidoscope.h"
 #include "Kaleidoscope-LEDControl.h"
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
-#include "Kaleidoscope-HostPowerManagement.h"
 
 // Keymap Layers
 enum { QWERTY, FUNCTION };
@@ -52,26 +51,9 @@ KEYMAPS(
 
 static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
 
-void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event event) {
-  switch (event) {
-  case kaleidoscope::HostPowerManagement::Suspend:
-    LEDControl.paused = true;
-    LEDControl.set_all_leds_to({0, 0, 0});
-    LEDControl.syncLeds();
-    break;
-  case kaleidoscope::HostPowerManagement::Resume:
-    LEDControl.paused = false;
-    LEDControl.refreshAll();
-    break;
-  case kaleidoscope::HostPowerManagement::Sleep:
-    break;
-  }
-}
-
 KALEIDOSCOPE_INIT_PLUGINS(
   LEDControl,
-  solidBlue,
-  HostPowerManagement
+  solidBlue
 );
 
 void setup() {
