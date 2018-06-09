@@ -15,13 +15,5 @@ keymaps = keymaps.split("\n").map do |line|
   ' ' + line.scan(key_regex).map { |x| x.ljust(pad) }.join.rstrip
 end.join("\n")
 
-new_file = [
-  before,
-  start_str,
-  keymaps,
-  "\n",
-  end_str,
-  after
-].join
-
+new_file = [before, start_str, keymaps, "\n", end_str, after].join
 File.open(firmware, 'w') { |fh| fh << new_file }
