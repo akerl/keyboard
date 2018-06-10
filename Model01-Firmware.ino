@@ -1,5 +1,6 @@
 // -*- mode: c++ -*-
 // Copyright 2016 Keyboardio, inc. <jesse@keyboard.io>
+// Copyright 2018 Les Aker <me@lesaker.org>
 // See "LICENSE" for license details
 
 #ifndef BUILD_INFORMATION
@@ -7,8 +8,6 @@
 #endif
 
 #include "Kaleidoscope.h"
-#include "Kaleidoscope-LEDControl.h"
-#include "Kaleidoscope-LEDEffect-SolidColor.h"
 
 // Keymap Layers
 enum { QWERTY, FUNCTION };
@@ -48,16 +47,8 @@ KEYMAPS(
 ) // KEYMAPS
 // *INDENT-ON*
 
-static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
-
-KALEIDOSCOPE_INIT_PLUGINS(
-  LEDControl,
-  solidBlue
-);
-
 void setup() {
   Kaleidoscope.setup();
-  LEDControl.set_mode(0);
 }
 
 void loop() {
