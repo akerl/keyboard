@@ -1,6 +1,9 @@
 # This stub makefile for a Kaleidoscope plugin pulls in 
 # all targets from the Kaleidoscope-Plugin library
 
+LOCAL_CFLAGS := -DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0
+export LOCAL_CFLAGS
+
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Darwin)
