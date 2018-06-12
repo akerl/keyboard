@@ -4,6 +4,9 @@
 LOCAL_CFLAGS := -DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0
 export LOCAL_CFLAGS
 
+DEFAULT_SKETCH=keyboard
+export DEFAULT_SKETCH
+
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Darwin)

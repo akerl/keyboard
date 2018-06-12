@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-firmware = 'Model01-Firmware.ino'
+firmware = 'keyboard.ino'
 start_regex = /^KEYMAPS\($/
 end_regex = %r{^\) \/\/ KEYMAPS$}
 key_regex = %r{ (?:[(\w]+,|\/\*blank\*\/)}
