@@ -69,13 +69,21 @@ static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
 
 KALEIDOSCOPE_INIT_PLUGINS(
   HostPowerManagement,
+  LEDControl,
   solidBlue
 );
 
 void setup() {
   Kaleidoscope.setup();
+  solidBlue.activate();
 }
 
+bool isLEDActivated = false;
+
 void loop() {
+  if (!isLEDActivated) {
+    solidBlue.activate();
+    isLEDActivated = true;
+  }
   Kaleidoscope.loop();
 }
