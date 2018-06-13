@@ -1,0 +1,37 @@
+name 'Model01-Firmware'
+org 'akerl'
+
+source(
+  type: 'git',
+  path: '.'
+)
+
+build do
+  # TODO: un-hand-jam this
+  hardware_dir = File.expand_path '~/Documents/Arduino/hardware/keyboardio/avr'
+  bin_dir = File.join hardware_dir, 'libraries/Kaleidoscope/bin'
+  run(
+    "#{bin_dir}/kaleidoscope-builder keyboard build",
+    'LOCAL_CFLAGS' => '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0'
+  )
+  cp 'output/keyboard/keyboard-latest.elf'
+  cp 'output/keyboard/keyboard-latest.hex'
+end
+
+package(
+  type: 'file',
+  artifacts: [
+    {
+      source: 'output/keyboard/keyboard-latest.hex',
+      name: 'keyboard.hex'
+    },
+    {
+      source: 'output/keyboard/keyboard-latest.elf',
+      name: 'keyboard.elf'
+    }
+  ]
+)
+
+test do
+  # TODO: add tests
+end
