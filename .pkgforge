@@ -7,11 +7,8 @@ source(
 )
 
 build do
-  # TODO: un-hand-jam this
-  hardware_dir = File.expand_path '~/Documents/Arduino/hardware/keyboardio/avr'
-  bin_dir = File.join hardware_dir, 'libraries/Kaleidoscope/bin'
   run(
-    "#{bin_dir}/kaleidoscope-builder keyboard build",
+    "board/libraries/Kaleidoscope/bin/kaleidoscope-builder keyboard build",
     'LOCAL_CFLAGS' => '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0'
   )
   cp 'output/keyboard/keyboard-latest.elf'

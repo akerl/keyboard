@@ -1,3 +1,6 @@
 [submodule "meta"]
 	path = meta
 	url = git://github.com/amylum/pkgforge-helper
+[submodule "board"]
+	path = board
+	url = https://github.com/keyboardio/Arduino-Boards.git
