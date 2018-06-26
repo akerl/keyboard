@@ -1,4 +1,4 @@
-name 'model01-firmware'
+name 'keyboard'
 org 'akerl'
 
 source(
