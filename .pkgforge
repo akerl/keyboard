@@ -12,7 +12,9 @@ build do
     'LOCAL_CFLAGS' => '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0',
     'ARDUINO_PATH' => '/usr/share/arduino',
     'ARDUINO_TOOLS_PATH' => '/usr/share/arduino/tools',
-    'BOARD_HARDWARE_PATH' => 'hardware'
+    'BOARD_HARDWARE_PATH' => 'hardware',
+    'AVR_GCC_PREFIX' => '/usr',
+    'AVR_SIZE' => '/usr/bin/avr-size'
   )
   cp 'output/keyboard/keyboard-latest.elf'
   cp 'output/keyboard/keyboard-latest.hex'
