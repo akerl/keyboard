@@ -1,4 +1,4 @@
-name 'Model01-Firmware'
+name 'model01-firmware'
 org 'akerl'
 
 source(
@@ -9,7 +9,10 @@ source(
 build do
   run(
     "board/libraries/Kaleidoscope/bin/kaleidoscope-builder keyboard build",
-    'LOCAL_CFLAGS' => '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0'
+    'LOCAL_CFLAGS' => '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0',
+    'ARDUINO_PATH' => '/usr/share/arduino',
+    'ARDUINO_TOOLS_PATH' => '/usr/share/arduino/tools',
+    'BOARD_HARDWARE_PATH' => 'hardware'
   )
   cp 'output/keyboard/keyboard-latest.elf'
   cp 'output/keyboard/keyboard-latest.hex'
