@@ -52,13 +52,10 @@ KEYMAPS(
 void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event event) {
   switch (event) {
   case kaleidoscope::HostPowerManagement::Suspend:
-    LEDControl.paused = true;
-    LEDControl.set_all_leds_to({0, 0, 0});
-    LEDControl.syncLeds();
+    LEDControl.disable();
     break;
   case kaleidoscope::HostPowerManagement::Resume:
-    LEDControl.paused = false;
-    LEDControl.refreshAll();
+    LEDControl.enable();
     break;
   case kaleidoscope::HostPowerManagement::Sleep:
     break;
@@ -78,12 +75,6 @@ void setup() {
   solidBlue.activate();
 }
 
-bool isLEDActivated = false;
-
 void loop() {
-  if (!isLEDActivated) {
-    solidBlue.activate();
-    isLEDActivated = true;
-  }
   Kaleidoscope.loop();
 }
