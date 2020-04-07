@@ -13,5 +13,5 @@ if [[ ! -e "${HEX_FILE_PATH}" ]] ; then
     exit 1
 fi
 
-./board/libraries/Kaleidoscope/bin/kaleidoscope-builder flash
+./hardware/keyboardio/avr/libraries/Kaleidoscope/bin/kaleidoscope-builder flash
 
