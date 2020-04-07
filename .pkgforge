@@ -8,13 +8,10 @@ source(
 
 build do
   run(
-    "./hardware/keyboardio/avr/libraries/Kaleidoscope/bin/kaleidoscope-builder keyboard build",
-    'LOCAL_CFLAGS' => '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0',
+    './hardware/keyboardio/avr/libraries/Kaleidoscope/bin/kaleidoscope-builder keyboard build',
     'ARDUINO_PATH' => '/usr/share/arduino',
-    'ARDUINO_TOOLS_PATH' => '/usr/share/arduino/tools',
     'BOARD_HARDWARE_PATH' => 'hardware',
-    'AVR_GCC_PREFIX' => '/usr',
-    'AVR_SIZE' => '/usr/bin/avr-size'
+    'COMPILER_PATH' => '/usr/bin/',
   )
   cp 'output/keyboard/keyboard-latest.elf'
   cp 'output/keyboard/keyboard-latest.hex'
