@@ -1,6 +1,6 @@
 // -*- mode: c++ -*-
 // Copyright 2016 Keyboardio, inc. <jesse@keyboard.io>
-// Copyright 2018 Les Aker <me@lesaker.org>
+// Copyright 2020 Les Aker <me@lesaker.org>
 // See "LICENSE" for license details
 
 #ifndef BUILD_INFORMATION
@@ -9,6 +9,7 @@
 
 #include "Kaleidoscope.h"
 #include "Kaleidoscope-HostPowerManagement.h"
+#include "Kaleidoscope-LEDControl.h"
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
 
 // Keymap Layers
@@ -49,20 +50,20 @@ KEYMAPS(
 ) // KEYMAPS
 // *INDENT-ON*
 
-void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event event) {
+void hostPowerManagementEventHandler(kaleidoscope::plugin::HostPowerManagement::Event event) {
   switch (event) {
-  case kaleidoscope::HostPowerManagement::Suspend:
+  case kaleidoscope::plugin::HostPowerManagement::Suspend:
     LEDControl.disable();
     break;
-  case kaleidoscope::HostPowerManagement::Resume:
+  case kaleidoscope::plugin::HostPowerManagement::Resume:
     LEDControl.enable();
     break;
-  case kaleidoscope::HostPowerManagement::Sleep:
+  case kaleidoscope::plugin::HostPowerManagement::Sleep:
     break;
   }
 }
 
-static kaleidoscope::LEDSolidColor solidBlue(0, 70, 130);
+static kaleidoscope::plugin::LEDSolidColor solidBlue(0, 70, 130);
 
 KALEIDOSCOPE_INIT_PLUGINS(
   HostPowerManagement,
