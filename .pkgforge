@@ -12,6 +12,7 @@ build do
     'ARDUINO_PATH' => '/usr/share/arduino',
     'BOARD_HARDWARE_PATH' => 'hardware',
     'COMPILER_PATH' => '/usr/bin/',
+    'OUTPUT_PATH' => 'output',
   )
   cp 'output/keyboard/keyboard-latest.elf'
   cp 'output/keyboard/keyboard-latest.hex'
@@ -21,11 +22,11 @@ package(
   type: 'file',
   artifacts: [
     {
-      source: 'output/keyboard/keyboard-latest.hex',
+      source: 'output/keyboard-latest.hex',
       name: 'keyboard.hex'
     },
     {
-      source: 'output/keyboard/keyboard-latest.elf',
+      source: 'output/keyboard-latest.elf',
       name: 'keyboard.elf'
     }
   ]
