@@ -14,8 +14,8 @@ build do
     'COMPILER_PATH' => '/usr/bin/',
     'OUTPUT_PATH' => 'output',
   )
-  cp 'output/keyboard/keyboard-latest.elf'
-  cp 'output/keyboard/keyboard-latest.hex'
+  cp 'output/keyboard-latest.elf'
+  cp 'output/keyboard-latest.hex'
 end
 
 package(
