@@ -1,14 +1,18 @@
 // -*- mode: c++ -*-
 // Copyright 2016 Keyboardio, inc. <jesse@keyboard.io>
-// Copyright 2020 Les Aker <me@lesaker.org>
+// Copyright 2021 Les Aker <me@lesaker.org>
 // See "LICENSE" for license details
 
 #ifndef BUILD_INFORMATION
-#define BUILD_INFORMATION "locally built"
+#define BUILD_INFORMATION "locally built on " __DATE__ " at " __TIME__
 #endif
 
 #include "Kaleidoscope.h"
 #include "Kaleidoscope-HostPowerManagement.h"
+#include "Kaleidoscope-Macros.h"
+#include "Kaleidoscope-HardwareTestMode.h"
+#include "Kaleidoscope-USB-Quirks.h"
+#include "Kaleidoscope-MagicCombo.h"
 #include "Kaleidoscope-LEDControl.h"
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
 
@@ -19,7 +23,7 @@ enum { QWERTY, FUNCTION };
 KEYMAPS(
 
   [QWERTY] = KEYMAP_STACKED
-  (___,                       Key_1,                      Key_2,                      Key_3,                      Key_4,                      Key_5,                      ___,
+  (___,                       Key_1,                      Key_2,                      Key_3,                      Key_4,                      Key_5,                      Key_LEDEffectNext,
   Key_Backtick,               Key_Q,                      Key_W,                      Key_E,                      Key_R,                      Key_T,                      Key_Tab,
   Key_PageUp,                 Key_A,                      Key_S,                      Key_D,                      Key_F,                      Key_G,
   Key_PageDown,               Key_Z,                      Key_X,                      Key_C,                      Key_V,                      Key_B,                      Key_Escape,
@@ -65,15 +69,48 @@ void hostPowerManagementEventHandler(kaleidoscope::plugin::HostPowerManagement::
 
 static kaleidoscope::plugin::LEDSolidColor solidBlue(0, 70, 130);
 
+enum {
+  COMBO_TOGGLE_NKRO_MODE,
+  COMBO_ENTER_TEST_MODE
+};
+
+static void toggleKeyboardProtocol(uint8_t combo_index) {
+  USBQuirks.toggleKeyboardProtocol();
+}
+
+static void enterHardwareTestMode(uint8_t combo_index) {
+  HardwareTestMode.runTests();
+}
+
+
+USE_MAGIC_COMBOS(
+  {
+    .action = toggleKeyboardProtocol,
+    // Left Fn + Esc + Shift
+    .keys = { R3C6, R2C6, R3C7 }
+  },
+  {
+    .action = enterHardwareTestMode,
+    // Left Fn + Prog + LED
+    .keys = { R3C6, R0C0, R0C6 }
+  }
+);
+
 KALEIDOSCOPE_INIT_PLUGINS(
-  HostPowerManagement,
+  HardwareTestMode,
   LEDControl,
-  solidBlue
+  LEDOff,
+  solidBlue,
+  Macros,
+  HostPowerManagement,
+  MagicCombo,
+  USBQuirks
 );
 
 void setup() {
   Kaleidoscope.setup();
-  solidBlue.activate();
+  HardwareTestMode.setActionKey(R3C6);
+  LEDOff.activate();
 }
 
 void loop() {
