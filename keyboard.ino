@@ -8,18 +8,19 @@
 #endif
 
 #include "Kaleidoscope.h"
-#include "Kaleidoscope-HostPowerManagement.h"
-#include "Kaleidoscope-Macros.h"
-#include "Kaleidoscope-HardwareTestMode.h"
-#include "Kaleidoscope-USB-Quirks.h"
-#include "Kaleidoscope-MagicCombo.h"
+#include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-LEDControl.h"
+#include "Kaleidoscope-NumPad.h"
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
+#include "Kaleidoscope-HardwareTestMode.h"
+#include "Kaleidoscope-HostPowerManagement.h"
+#include "Kaleidoscope-MagicCombo.h"
+#include "Kaleidoscope-USB-Quirks.h"
 
-// Keymap Layers
-enum { QWERTY, FUNCTION };
+enum { QWERTY, NUMPAD, FUNCTION }; // layers
 
 // *INDENT-OFF*
+
 KEYMAPS(
 
   [QWERTY] = KEYMAP_STACKED
@@ -37,6 +38,22 @@ KEYMAPS(
   Key_RightShift,             Key_LeftAlt,                Key_Spacebar,               Key_RightControl,
   ShiftToLayer(FUNCTION)),
 
+
+  [NUMPAD] =  KEYMAP_STACKED
+  (___,                       ___,                        ___,                        ___,                        ___,                        ___,                        ___,
+  ___,                        ___,                        ___,                        ___,                        ___,                        ___,                        ___,
+  ___,                        ___,                        ___,                        ___,                        ___,                        ___,
+  ___,                        ___,                        ___,                        ___,                        ___,                        ___,                        ___,
+  ___,                        ___,                        ___,                        ___,
+  ___,
+
+  ___,                        ___,                        ___,                        ___,                        ___,                        ___,                        ___,
+  ___,                        ___,                        ___,                        ___,                        ___,                        ___,                        ___,
+  ___,                        ___,                        ___,                        ___,                        ___,                        ___,
+  ___,                        ___,                        ___,                        ___,                        ___,                        ___,                        ___,
+  ___,                        ___,                        ___,                        ___,
+   ___),
+
   [FUNCTION] =  KEYMAP_STACKED
   (___,                       Key_F1,                     Key_F2,                     Key_F3,                     Key_F4,                     Key_F5,                     ___,
   ___,                        ___,                        Key_Mute,                   Consumer_VolumeDecrement,   Consumer_VolumeIncrement,   Consumer_ScanNextTrack,     ___,
@@ -51,7 +68,7 @@ KEYMAPS(
   ___,                        ___,                        ___,                        ___,                        ___,                        Key_Backslash,              Key_Pipe,
   ___,                        ___,                        ___,                        ___,
   ___)
-) // KEYMAPS
+) // KEYMAPS(
 // *INDENT-ON*
 
 void hostPowerManagementEventHandler(kaleidoscope::plugin::HostPowerManagement::Event event) {
@@ -85,14 +102,14 @@ static void enterHardwareTestMode(uint8_t combo_index) {
 
 USE_MAGIC_COMBOS(
   {
-    .action = toggleKeyboardProtocol,
+  toggleKeyboardProtocol,
     // Left Fn + Esc + Shift
-    .keys = { R3C6, R2C6, R3C7 }
+  R3C6,                       R2C6,
   },
   {
-    .action = enterHardwareTestMode,
+  enterHardwareTestMode,
     // Left Fn + Prog + LED
-    .keys = { R3C6, R0C0, R0C6 }
+  R3C6,                       R0C0,
   }
 );
 
@@ -101,7 +118,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
   LEDControl,
   LEDOff,
   solidBlue,
-  Macros,
   HostPowerManagement,
   MagicCombo,
   USBQuirks

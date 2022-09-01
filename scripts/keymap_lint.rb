@@ -2,7 +2,7 @@
 
 firmware = 'keyboard.ino'
 start_regex = /^KEYMAPS\($/
-end_regex = %r{^\) \/\/ KEYMAPS$}
+end_regex = %r{^\) \/\/ KEYMAPS\($}
 key_regex = %r{ (?:[(\w]+,|\/\*blank\*\/)}
 
 orig_file = File.read(firmware)
