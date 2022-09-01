@@ -1,3 +1,3 @@
 board_manager:
   additional_urls:
-    - https://downloads.arduino.cc/packages/package_staging_index.json
+    - https://raw.githubusercontent.com/keyboardio/boardsmanager/master/package_keyboardio_index.json

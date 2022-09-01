@@ -7,8 +7,7 @@ source(
 )
 
 build do
-  #run 'arduino-cli core update-index'
-  #run 'arduino-cli core install keyboardio:avr'
+  run 'arduino-cli core install keyboardio:avr arduino:avr'
   run 'arduino-cli compile --output-dir output'
   cp 'output/keyboard-latest.elf'
   cp 'output/keyboard-latest.hex'
