@@ -1,2 +1,2 @@
-FROM docker.pkg.github.com/dock0/pkgforge/pkgforge:latest
+FROM ghcr.io/dock0/pkgforge-golang:latest
 RUN pacman -S --noconfirm --needed arduino arduino-avr-core
