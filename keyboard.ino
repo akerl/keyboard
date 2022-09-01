@@ -10,14 +10,13 @@
 #include "Kaleidoscope.h"
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-LEDControl.h"
-#include "Kaleidoscope-NumPad.h"
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
 #include "Kaleidoscope-HardwareTestMode.h"
 #include "Kaleidoscope-HostPowerManagement.h"
 #include "Kaleidoscope-MagicCombo.h"
 #include "Kaleidoscope-USB-Quirks.h"
 
-enum { QWERTY, NUMPAD, FUNCTION }; // layers
+enum { QWERTY, FUNCTION }; // layers
 
 // *INDENT-OFF*
 
@@ -38,21 +37,6 @@ KEYMAPS(
   Key_RightShift,             Key_LeftAlt,                Key_Spacebar,               Key_RightControl,
   ShiftToLayer(FUNCTION)),
 
-
-  [NUMPAD] =  KEYMAP_STACKED
-  (___,                       ___,                        ___,                        ___,                        ___,                        ___,                        ___,
-  ___,                        ___,                        ___,                        ___,                        ___,                        ___,                        ___,
-  ___,                        ___,                        ___,                        ___,                        ___,                        ___,
-  ___,                        ___,                        ___,                        ___,                        ___,                        ___,                        ___,
-  ___,                        ___,                        ___,                        ___,
-  ___,
-
-  ___,                        ___,                        ___,                        ___,                        ___,                        ___,                        ___,
-  ___,                        ___,                        ___,                        ___,                        ___,                        ___,                        ___,
-  ___,                        ___,                        ___,                        ___,                        ___,                        ___,
-  ___,                        ___,                        ___,                        ___,                        ___,                        ___,                        ___,
-  ___,                        ___,                        ___,                        ___,
-   ___),
 
   [FUNCTION] =  KEYMAP_STACKED
   (___,                       Key_F1,                     Key_F2,                     Key_F3,                     Key_F4,                     Key_F5,                     ___,
