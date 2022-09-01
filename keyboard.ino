@@ -1,6 +1,6 @@
 // -*- mode: c++ -*-
 // Copyright 2016 Keyboardio, inc. <jesse@keyboard.io>
-// Copyright 2021 Les Aker <me@lesaker.org>
+// Copyright 2022 Les Aker <me@lesaker.org>
 // See "LICENSE" for license details
 
 #ifndef BUILD_INFORMATION
