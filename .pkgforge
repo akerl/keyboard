@@ -11,8 +11,8 @@ build do
   run "touch #{dirname}.ino"
   run 'arduino-cli core install keyboardio:avr arduino:avr'
   run 'arduino-cli compile --output-dir output'
-  cp "output/#{dirname}.ino.elf" 'keyboard.elf'
-  cp "output/#{dirname}.ino.hex" 'keyboard.hex'
+  cp "output/#{dirname}.ino.elf", 'keyboard.elf'
+  cp "output/#{dirname}.ino.hex", 'keyboard.hex'
 end
 
 package(
