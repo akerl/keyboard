@@ -7,6 +7,8 @@ source(
 )
 
 build do
+  dirname = tmpdir(:build).split('/').last
+  run "touch #{dirname}.ino"
   run 'arduino-cli core install keyboardio:avr arduino:avr'
   run 'arduino-cli compile --output-dir output'
   cp 'output/keyboard-latest.elf'
