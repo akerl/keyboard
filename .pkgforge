@@ -7,13 +7,9 @@ source(
 )
 
 build do
-  run(
-    './hardware/keyboardio/avr/libraries/Kaleidoscope/bin/kaleidoscope-builder keyboard build',
-    'ARDUINO_PATH' => '/usr/share/arduino',
-    'BOARD_HARDWARE_PATH' => 'hardware',
-    'COMPILER_PATH' => '/usr/bin/',
-    'OUTPUT_PATH' => 'output',
-  )
+  #run 'arduino-cli core update-index'
+  #run 'arduino-cli core install keyboardio:avr'
+  run 'arduino-cli compile --output-dir output'
   cp 'output/keyboard-latest.elf'
   cp 'output/keyboard-latest.hex'
 end
