@@ -7,16 +7,16 @@ source(
 )
 
 build do
-  #dirname = tmpdir(:build).split('/').last
+  dirname = tmpdir(:build).split('/').last
+  run "touch #{dirname}.ino"
+
   run 'arduino-cli core install keyboardio:avr arduino:avr'
   kaleidoscope_dir = Dir.glob(File.expand_path('~/.arduino15/packages/keyboardio/hardware/avr/*/libraries/Kaleidoscope')).first
   run 'git config --global url."https://".insteadOf git://'
   run "make -C #{kaleidoscope_dir} setup"
-  run 'make -f Makefile.upstream', 'KALEIDOSCOPE_DIR' => kaleidoscope_dir
-  #run "touch #{dirname}.ino"
-  #run 'arduino-cli compile --output-dir output'
-  #cp "output/#{dirname}.ino.elf", 'keyboard.elf'
-  #cp "output/#{dirname}.ino.hex", 'keyboard.hex'
+  run 'arduino-cli compile --output-dir output'
+  cp "output/#{dirname}.ino.elf", 'keyboard.elf'
+  cp "output/#{dirname}.ino.hex", 'keyboard.hex'
 end
 
 package(
