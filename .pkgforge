@@ -14,7 +14,7 @@ build do
 
   ['model01', 'model100'].each do |board|
     Dir.chdir(board) do
-      run 'arduino-cli compile --output-dir output'
+      run 'arduino-cli compile --output-dir ../output'
       cp "output/#{board}.ino.elf", "#{board}.elf"
       cp "output/#{board}.ino.hex", "#{board}.hex"
     end
