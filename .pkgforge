@@ -24,16 +24,15 @@ end
 package(
   type: 'file',
   artifacts: [
-      {
-        source: 'model01.ino.with_bootloader.bin',
-        name: 'model01.bin'
-      },
-      {
-        source: 'model100.ino.bin',
-        name: 'model100.bin'
-      }
-    ]
-  end
+    {
+      source: 'model01.ino.with_bootloader.bin',
+      name: 'model01.bin'
+    },
+    {
+      source: 'model100.ino.bin',
+      name: 'model100.bin'
+    }
+  ]
 )
 
 test do
