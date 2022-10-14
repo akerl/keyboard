@@ -15,10 +15,10 @@ build do
   ['model01', 'model100'].each do |board|
     Dir.chdir(board) do
       run 'arduino-cli compile --output-dir ../output'
-      cp "output/#{board}.ino.elf", "#{board}.elf"
-      cp "output/#{board}.ino.hex", "#{board}.hex"
     end
   end
+  cp 'output/model01.ino.with_bootloader.bin'
+  cp 'output/model100.ino.bin'
 end
 
 package(
