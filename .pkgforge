@@ -23,15 +23,14 @@ end
 
 package(
   type: 'file',
-  artifacts: ['model01', 'model100'].flat_map do |board|
-    [
+  artifacts: [
       {
-        source: "#{board}.hex",
-        name: "#{board}.hex"
+        source: 'model01.ino.with_bootloader.bin',
+        name: 'model01.bin'
       },
       {
-        source: "#{board}.elf",
-        name: "#{board}.elf"
+        source: 'model100.ino.bin',
+        name: 'model100.bin'
       }
     ]
   end
