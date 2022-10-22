@@ -7,11 +7,11 @@
 #define BUILD_INFORMATION "locally built on " __DATE__ " at " __TIME__
 #endif
 
-#include "Kaleidoscope.h"
-#include "Kaleidoscope-HostPowerManagement.h"
+#include <Kaleidoscope.h>
+#include <Kaleidoscope-HostPowerManagement.h>
 #include <Kaleidoscope-IdleLEDs.h>
-#include "Kaleidoscope-LEDControl.h"
-#include "Kaleidoscope-LEDEffect-SolidColor.h"
+#include <Kaleidoscope-LEDControl.h>
+#include <Kaleidoscope-LEDEffect-SolidColor.h>
 #include <Kaleidoscope-Qukeys.h>
 
 enum { QWERTY, FUNCTION }; // layers
