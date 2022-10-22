@@ -8,16 +8,14 @@
 #endif
 
 #include <Kaleidoscope.h>
-#include <Kaleidoscope-HostPowerManagement.h>
 #include <Kaleidoscope-IdleLEDs.h>
 #include <Kaleidoscope-LEDControl.h>
 #include <Kaleidoscope-LEDEffect-SolidColor.h>
 #include <Kaleidoscope-Qukeys.h>
 
-enum { QWERTY, FUNCTION }; // layers
+enum { QWERTY, FUNCTION };
 
 // *INDENT-OFF*
-
 KEYMAPS(
 
   [QWERTY] = KEYMAP_STACKED
@@ -52,19 +50,6 @@ KEYMAPS(
 ) // KEYMAPS(
 // *INDENT-ON*
 
-void hostPowerManagementEventHandler(kaleidoscope::plugin::HostPowerManagement::Event event) {
-  switch (event) {
-  case kaleidoscope::plugin::HostPowerManagement::Suspend:
-    LEDControl.disable();
-    break;
-  case kaleidoscope::plugin::HostPowerManagement::Resume:
-    LEDControl.enable();
-    break;
-  case kaleidoscope::plugin::HostPowerManagement::Sleep:
-    break;
-  }
-}
-
 static kaleidoscope::plugin::LEDSolidColor solidBlue(0, 70, 130);
 
 KALEIDOSCOPE_INIT_PLUGINS(
@@ -72,7 +57,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
   IdleLEDs,
   solidBlue,
   LEDOff,
-  HostPowerManagement,
   Qukeys
 );
 
@@ -87,8 +71,8 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 7), LSHIFT(Key_9)),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), LSHIFT(Key_0)),
 
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 7), Key_LeftCurlyBracket),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), Key_RightCurlyBracket),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 7), Key_LeftCurlyBracket),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 8), Key_RightCurlyBracket),
 
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Backslash),
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), Key_Pipe),
