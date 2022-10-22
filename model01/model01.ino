@@ -14,7 +14,7 @@
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
 #include <Kaleidoscope-Qukeys.h>
 
-enum { QWERTY, NUMPAD, FUNCTION }; // layers
+enum { QWERTY, FUNCTION }; // layers
 
 // *INDENT-OFF*
 
