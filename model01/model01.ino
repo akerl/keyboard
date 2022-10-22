@@ -8,13 +8,10 @@
 #endif
 
 #include "Kaleidoscope.h"
-#include "Kaleidoscope-MouseKeys.h"
-#include "Kaleidoscope-LEDControl.h"
-#include "Kaleidoscope-LEDEffect-SolidColor.h"
-#include "Kaleidoscope-HardwareTestMode.h"
 #include "Kaleidoscope-HostPowerManagement.h"
-#include "Kaleidoscope-MagicCombo.h"
-#include "Kaleidoscope-USB-Quirks.h"
+#include <Kaleidoscope-IdleLEDs.h>
+#include "Kaleidoscope-LEDEffect-SolidColor.h"
+#include <Kaleidoscope-Qukeys.h>
 
 enum { QWERTY, NUMPAD, FUNCTION }; // layers
 
@@ -85,47 +82,30 @@ void hostPowerManagementEventHandler(kaleidoscope::plugin::HostPowerManagement::
 
 static kaleidoscope::plugin::LEDSolidColor solidBlue(0, 70, 130);
 
-enum {
-  COMBO_TOGGLE_NKRO_MODE,
-  COMBO_ENTER_TEST_MODE
-};
-
-static void toggleKeyboardProtocol(uint8_t combo_index) {
-  USBQuirks.toggleKeyboardProtocol();
-}
-
-static void enterHardwareTestMode(uint8_t combo_index) {
-  HardwareTestMode.runTests();
-}
-
-
-USE_MAGIC_COMBOS(
-  {
-  toggleKeyboardProtocol,
-    // Left Fn + Esc + Shift
-  R3C6,                       R2C6,
-  },
-  {
-  enterHardwareTestMode,
-    // Left Fn + Prog + LED
-  R3C6,                       R0C0,
-  }
-);
-
 KALEIDOSCOPE_INIT_PLUGINS(
-  HardwareTestMode,
   LEDControl,
-  LEDOff,
+  IdleLEDs,
   solidBlue,
+  LEDOff,
   HostPowerManagement,
-  MagicCombo,
-  USBQuirks
+  Qukeys
 );
 
 void setup() {
   Kaleidoscope.setup();
-  HardwareTestMode.setActionKey(R3C6);
   LEDOff.activate();
+  IdleLEDs.idle_time_limit(10000);
+
+  QUKEYS(
+    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 0), Key_Backslash),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 1), Key_LeftBracket),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 2), Key_KeypadLeftCurlyBrace),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 3), Key_KeypadLeftParen),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 4), Key_KeypadPipe),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 5), Key_RightBracket),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 6), Key_KeypadRightCurlyBrace),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 7), Key_KeypadRightParen),
+  )
 }
 
 void loop() {
