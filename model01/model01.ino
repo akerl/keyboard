@@ -80,7 +80,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
   Kaleidoscope.setup();
   LEDOff.activate();
-  IdleLEDs.idle_time_limit(10000);
+  IdleLEDs.setIdleTimeoutSeconds(10000);
 
   QUKEYS(
     kaleidoscope::plugin::Qukey(0, KeyAddr(4, 0), Key_Backslash),
