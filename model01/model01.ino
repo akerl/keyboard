@@ -25,14 +25,14 @@ KEYMAPS(
   Key_Backtick,               Key_Q,                      Key_W,                      Key_E,                      Key_R,                      Key_T,                      Key_Tab,
   Key_PageUp,                 Key_A,                      Key_S,                      Key_D,                      Key_F,                      Key_G,
   Key_PageDown,               Key_Z,                      Key_X,                      Key_C,                      Key_V,                      Key_B,                      Key_Escape,
-  Key_LeftControl,            Key_LeftAlt,                Key_LeftGui,                Key_LeftShift,
+  Key_LeftControl,            Key_Backspace,              Key_LeftGui,                Key_LeftShift,
   ShiftToLayer(FUNCTION),
 
   ___,                        Key_6,                      Key_7,                      Key_8,                      Key_9,                      Key_0,                      ___,
   Key_Enter,                  Key_Y,                      Key_U,                      Key_I,                      Key_O,                      Key_P,                      Key_Equals,
   /*blank*/                   Key_H,                      Key_J,                      Key_K,                      Key_L,                      Key_Semicolon,              Key_Quote,
   ___,                        Key_N,                      Key_M,                      Key_Comma,                  Key_Period,                 Key_Slash,                  Key_Minus,
-  Key_RightShift,             Key_RightAlt,               Key_RightGui,               Key_RightControl,
+  Key_RightShift,             Key_LeftAlt,                Key_Space,                  Key_RightControl,
   ShiftToLayer(FUNCTION)),
 
   [FUNCTION] =  KEYMAP_STACKED
@@ -81,20 +81,17 @@ void setup() {
   IdleLEDs.setIdleTimeoutSeconds(60);
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Backspace),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), Key_Space),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 7), Key_LeftBracket),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 8), Key_RightBracket),
 
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 7), Key_LeftBracket),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 8), Key_RightBracket),
-
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 7), Key_KeypadLeftParen),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), Key_KeypadRightParen),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 7), LSHIFT(Key_9)),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), LSHIFT(Key_0)),
 
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 7), Key_LeftCurlyBracket),
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), Key_RightCurlyBracket),
 
-    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 7), Key_Backslash),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 8), Key_Pipe),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Backslash),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), Key_Pipe),
   )
 }
 
