@@ -74,8 +74,8 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 7), Key_LeftCurlyBracket),
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 8), Key_RightCurlyBracket),
 
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Backslash),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), Key_Pipe),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Pipe),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), Key_Backslash),
   )
 }
 
