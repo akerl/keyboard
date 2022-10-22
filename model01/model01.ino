@@ -35,7 +35,6 @@ KEYMAPS(
   Key_RightShift,             Key_LeftAlt,                Key_Spacebar,               Key_RightControl,
   ShiftToLayer(FUNCTION)),
 
-
   [FUNCTION] =  KEYMAP_STACKED
   (___,                       Key_F1,                     Key_F2,                     Key_F3,                     Key_F4,                     Key_F5,                     ___,
   ___,                        ___,                        Key_Mute,                   Consumer_VolumeDecrement,   Consumer_VolumeIncrement,   Consumer_ScanNextTrack,     ___,
