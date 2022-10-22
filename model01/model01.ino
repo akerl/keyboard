@@ -12,7 +12,8 @@
 #include <Kaleidoscope-IdleLEDs.h>
 #include "Kaleidoscope-LEDControl.h"
 #include "Kaleidoscope-LEDEffect-SolidColor.h"
-#include <Kaleidoscope-Qukeys.h>
+#include <Kaleidoscope-SpaceCadet.h>
+
 
 enum { QWERTY, FUNCTION }; // layers
 
@@ -73,24 +74,23 @@ KALEIDOSCOPE_INIT_PLUGINS(
   solidBlue,
   LEDOff,
   HostPowerManagement,
-  Qukeys
+  SpaceCadet
 );
 
 void setup() {
   Kaleidoscope.setup();
-  LEDOff.activate();
-  IdleLEDs.setIdleTimeoutSeconds(10000);
+  IdleLEDs.setIdleTimeoutSeconds(10000)
 
-  QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 0), Key_Backslash),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 1), Key_LeftBracket),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 2), Key_KeypadLeftCurlyBrace),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 3), Key_KeypadLeftParen),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 4), Key_KeypadPipe),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 5), Key_RightBracket),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 6), Key_KeypadRightCurlyBrace),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(4, 7), Key_KeypadRightParen),
-  )
+  static kaleidoscope::plugin::SpaceCadet::KeyBinding spacecadetmap[] = {
+    {Key_LeftShift, Key_LeftParen, 250}
+    , {Key_RightShift, Key_RightParen, 250}
+    , {Key_LeftGui, Key_LeftCurlyBracket, 250}
+    , {Key_RightAlt, Key_RightCurlyBracket, 250}
+    , {Key_LeftControl, Key_LeftBracket, 250}
+    , {Key_RightControl, Key_RightBracket, 250}
+    , SPACECADET_MAP_END
+  };
+  SpaceCadet.setMap(spacecadetmap);
 }
 
 void loop() {
