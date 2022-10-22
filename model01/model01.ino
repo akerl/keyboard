@@ -79,7 +79,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
 void setup() {
   Kaleidoscope.setup();
-  IdleLEDs.setIdleTimeoutSeconds(10000)
+  IdleLEDs.setIdleTimeoutSeconds(10000);
 
   static kaleidoscope::plugin::SpaceCadet::KeyBinding spacecadetmap[] = {
     {Key_LeftShift, Key_LeftParen, 250}
