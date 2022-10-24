@@ -26,7 +26,7 @@ KEYMAPS(
   Key_LeftControl,            Key_Backspace,              Key_LeftGui,                Key_LeftShift,
   ShiftToLayer(FUNCTION),
 
-  ___,                        Key_6,                      Key_7,                      Key_8,                      Key_9,                      Key_0,                      ___,
+  ___,                        Key_6,                      Key_7,                      Key_8,                      Key_9,                      Key_0,                      LSHIFT(LGUI(Key_M)),
   Key_Enter,                  Key_Y,                      Key_U,                      Key_I,                      Key_O,                      Key_P,                      Key_Equals,
   /*blank*/                   Key_H,                      Key_J,                      Key_K,                      Key_L,                      Key_Semicolon,              Key_Quote,
   ___,                        Key_N,                      Key_M,                      Key_Comma,                  Key_Period,                 Key_Slash,                  Key_Minus,
