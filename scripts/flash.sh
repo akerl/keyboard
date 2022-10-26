@@ -9,6 +9,8 @@ if [[ ! -f "$binfile" ]] ; then
     exit 1
 fi
 
+./scripts/setup.sh
+
 device="$(arduino-cli board list | awk '/usbmodem/ { print $1 }')"
 
 if [[ -z "$device" ]] ; then

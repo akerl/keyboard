@@ -7,10 +7,7 @@ source(
 )
 
 build do
-  run 'arduino-cli core install keyboardio:avr arduino:avr keyboardio:gd32'
-  kaleidoscope_dir = Dir.glob(File.expand_path('~/.arduino15/packages/keyboardio/hardware/avr/*/libraries/Kaleidoscope')).first
-  run 'git config --global url."https://".insteadOf git://'
-  run "make -C #{kaleidoscope_dir} setup"
+  run 'scripts/setup.sh'
 
   ['model01', 'model100'].each do |board|
     Dir.chdir(board) do
