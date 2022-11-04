@@ -63,6 +63,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
   Kaleidoscope.setup();
   IdleLEDs.setIdleTimeoutSeconds(300);
+  Qukeys.setHoldTimeout(150);
+  Qukeys.setOverlapThreshold(60);
 
   QUKEYS(
     kaleidoscope::plugin::Qukey(0, KeyAddr(0, 7), Key_LeftBracket),
