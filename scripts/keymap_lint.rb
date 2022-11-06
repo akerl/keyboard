@@ -4,7 +4,7 @@ files = Dir.glob('*/*.ino')
 
 start_regex = /^KEYMAPS\($/
 end_regex = %r{^\) \/\/ KEYMAPS\($}
-key_regex = %r{ (?:[(\w]+,|\/\*blank\*\/)}
+key_regex = %r{ (?:[()\w]+,|\/\*blank\*\/)}
 
 files.each do |file|
   orig_file = File.read(file)

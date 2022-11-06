@@ -35,7 +35,7 @@ KEYMAPS(
 
   [FUNCTION] =  KEYMAP_STACKED
   (___,                       Key_F1,                     Key_F2,                     Key_F3,                     Key_F4,                     Key_F5,                     Key_LEDEffectNext,
-  ___,                        ___,                        Key_Mute,                   Consumer_VolumeDecrement,   Consumer_VolumeIncrement,   Consumer_ScanNextTrack,     ___,
+  ___,                        LSHIFT(LGUI(LALT(Key_S))),  Key_Mute,                   Consumer_VolumeDecrement,   Consumer_VolumeIncrement,   Consumer_ScanNextTrack,     ___,
   Key_Home,                   ___,                        ___,                        ___,                        ___,                        Consumer_PlaySlashPause,
   Key_End,                    ___,                        ___,                        ___,                        ___,                        Consumer_ScanPreviousTrack, ___,
   ___,                        Key_Delete,                 ___,                        ___,
