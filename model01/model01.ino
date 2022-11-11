@@ -63,7 +63,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
   Kaleidoscope.setup();
   IdleLEDs.setIdleTimeoutSeconds(300);
-  Qukeys.setHoldTimeout(150);
+  Qukeys.setHoldTimeout(100);
   Qukeys.setOverlapThreshold(60);
 
   QUKEYS(
