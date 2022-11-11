@@ -65,6 +65,7 @@ void setup() {
   IdleLEDs.setIdleTimeoutSeconds(300);
   Qukeys.setHoldTimeout(100);
   Qukeys.setOverlapThreshold(60);
+  Qukeys.setMaxIntervalForTapRepeat(0);
 
   QUKEYS(
     kaleidoscope::plugin::Qukey(0, KeyAddr(0, 7), Key_LeftBracket),
