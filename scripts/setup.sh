@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+arduino-cli core update-index
 arduino-cli core install keyboardio:avr arduino:avr keyboardio:gd32
 
 ARDUINO_DATA="$(arduino-cli config dump | awk '/data/ { print $2 }')"
