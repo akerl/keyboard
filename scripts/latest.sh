@@ -6,10 +6,10 @@ mkdir -p pkg
 
 header=""
 if [[ -v GITHUB_TOKEN ]] ; then
-    header="--header 'Authorization: Bearer $GITHUB_TOKEN'"
+    header="-HAuthorization: Bearer $GITHUB_TOKEN"
 fi
 
-url="$(curl -s $header 'https://api.github.com/repos/akerl/keyboard/releases/latest' | grep 'browser_download_url.*model100' | cut -d : -f 2,3 | tr -d \"\ )"
+url="$(curl -s "$header" 'https://api.github.com/repos/akerl/keyboard/releases/latest' | grep 'browser_download_url.*model100' | cut -d : -f 2,3 | tr -d \"\ )"
 
 echo "Downloading ${url}"
 
