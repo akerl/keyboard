@@ -1,3 +1,4 @@
 board_manager:
   additional_urls:
     - https://raw.githubusercontent.com/keyboardio/boardsmanager/master/package_keyboardio_index.json
+
