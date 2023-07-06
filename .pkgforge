@@ -11,7 +11,7 @@ build do
 
   ['model01', 'model100'].each do |board|
     Dir.chdir(board) do
-      run 'arduino-cli compile --output-dir ../output'
+      run "arduino-cli compile --output-dir ../output -b keyboardio:avr:#{board}"
     end
   end
   cp 'output/model01.ino.with_bootloader.bin'
